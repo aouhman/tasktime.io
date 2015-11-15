@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="bower_components/requirejs/require.js"></script>
+    <script>
+        requirejs.config({
+            baseUrl: './js/',
+            paths:{
+                jquery:'../bower_components/jquery/dist/jquery.js',
+                materialize:'../bower_components/materialize/dist/materialize.js',
+                underscore:'../bower_components/underscore/dist/materialize.js',
+                backbone:'../bower_components/backbone/backbone.js',
+                chaplin:'../bower_components/chaplin/chaplin.js',
+
+            },
+            shim:{
+                unserscore:{
+                    exports:'_'
+                },
+                backbone:{
+                    deps:['underscore','jquery'],
+                    exports:'Backbone'
+                }
+            },
+         urlArgs: 'bust='+ (new Date()).getDate()
+        });
+        require(['application','routes'],function(Application,Routes){
+           new Application ({routes:Routes,controllerSuffix:'-controller'})
+        });
+
+
+    </script>
+    <title></title>
+</head>
+<body>
+
+</body>
+</html>
